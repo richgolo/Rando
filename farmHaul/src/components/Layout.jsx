@@ -20,7 +20,7 @@ function initials(name) {
 }
 
 export default function Layout() {
-  const { profile, signOut } = useAuth()
+  const { user, profile, loading, signOut } = useAuth()
   const links = profile ? NAV[profile.role] : []
 
   return (
@@ -40,6 +40,13 @@ export default function Layout() {
                 </NavLink>
               ))}
             </nav>
+          )}
+
+          {!loading && !user && (
+            <div className="topbar-actions">
+              <Link className="btn btn-ghost btn-small" to="/signin">Sign in</Link>
+              <Link className="btn btn-primary btn-small" to="/signup">Create account</Link>
+            </div>
           )}
 
           {profile && (

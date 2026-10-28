@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { unwrap, useData } from '../lib/useData'
-import { formatDateTime, formatGhs, one } from '../lib/format'
+import { formatDate, formatDateTime, formatGhs, one, whatsappLink } from '../lib/format'
 import { Empty, ErrorBox, Loading, StatusBadge } from '../components/ui'
 import Icon from '../components/Icon'
 import RequestSummary from '../components/RequestSummary'
@@ -75,6 +75,20 @@ export default function RequestDetail() {
         <RequestSummary request={request} showLandmarks />
         {job && (
           <Link className="btn btn-primary" to={`/jobs/${job.id}`}>View delivery progress</Link>
+        )}
+        {request.status === 'OPEN' && (
+          <a
+            className="btn btn-whatsapp share-btn"
+            href={whatsappLink(
+              `Transport needed: ${Number(request.quantity)} ${request.unit} of ${request.produce}, ` +
+              `${request.pickup_area} to ${request.destination_area}, pickup ${formatDate(request.pickup_date)}. ` +
+              `Send your price on FarmHaul: ${window.location.origin}/transporter/requests/${request.id}`,
+            )}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name="chat" size={16} /> Share with transporters on WhatsApp
+          </a>
         )}
         {request.status === 'CANCELLED' && request.cancel_reason && (
           <p className="muted">Reason: {request.cancel_reason}</p>

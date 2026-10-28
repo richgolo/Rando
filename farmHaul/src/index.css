@@ -230,6 +230,63 @@ section > h2 { margin-top: 1.25rem; }
 .history[open] .history-chevron { transform: rotate(90deg); }
 .history .timeline { padding: 0 1.15rem 1.15rem; }
 
+/* ---------- WhatsApp ---------- */
+.btn.btn-whatsapp { background: #e7f8ee; border-color: transparent; color: #0b7a3e; }
+.btn.btn-whatsapp:hover { background: #d3f2e0; border-color: transparent; }
+.contact-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+.share-btn { margin-top: 1rem; }
+
+/* ---------- Header for visitors ---------- */
+.topbar-actions { margin-left: auto; display: flex; gap: 0.4rem; }
+
+/* ---------- Front page ---------- */
+.landing { display: grid; gap: 2.25rem; padding-top: 0.5rem; }
+.landing-hero { display: grid; gap: 1.5rem; align-items: center; }
+.landing-copy h1 { font-size: 2.1rem; line-height: 1.1; margin: 0 0 0.75rem; text-wrap: balance; }
+.landing-copy .eyebrow { color: var(--brand); }
+.landing-lede { font-size: 1.08rem; color: var(--muted); max-width: 46ch; margin-bottom: 1.25rem; }
+.landing-ctas { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+.landing-ctas .btn { min-height: 50px; padding-inline: 1.4rem; }
+.landing-photo {
+  aspect-ratio: 4 / 3; max-width: 100%; border-radius: var(--radius);
+  background: url('./assets/produce.jpg') center / cover no-repeat, var(--brand-soft);
+}
+.landing h2 { margin-top: 0; }
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.step { margin: 0; }
+.step-num {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--brand-soft); color: var(--brand); font-weight: 700; margin-bottom: 0.6rem;
+}
+.step-title { font-weight: 700; margin-bottom: 0.2rem; }
+.audiences { display: grid; gap: 0.75rem; }
+.audience { margin: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+.audience h2 { margin: 0.25rem 0 0; }
+.audience .load-icon, .audience .vehicle-icon { width: 48px; height: 48px; }
+.audience ul { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.45rem; }
+.audience li { display: flex; gap: 0.5rem; align-items: flex-start; }
+.audience li .icon { color: var(--brand); margin-top: 0.2rem; }
+.audience .btn { margin-top: auto; }
+.landing-foot { text-align: center; }
+
+@media (max-width: 759px) {
+  .landing-photo { aspect-ratio: 16 / 9; }
+}
+@media (min-width: 760px) {
+  .landing-hero { grid-template-columns: 1.1fr 1fr; gap: 2.5rem; padding-block: 1.5rem; }
+  .landing-copy h1 { font-size: 2.8rem; }
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .audiences { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .topbar-actions .btn-ghost { display: none; }
+  .landing-photo { aspect-ratio: 16 / 9; }
+  .landing-copy h1 { font-size: 1.85rem; }
+  .contact { flex-wrap: wrap; }
+  .contact-actions { width: 100%; justify-content: stretch; }
+  .contact-actions .btn { flex: 1; }
+}
+
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
   clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;

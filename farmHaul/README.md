@@ -26,4 +26,4 @@ Database: paste [supabase/migrations/20261026000000_farmhaul_schema.sql](supabas
 Step-by-step explanations of everything we built, with presentation talking points: **[docs/](docs/README.md)**.
 
 ## Limitations
-No payments, GPS, SMS or WhatsApp. Pilot areas and units are placeholders until confirmed by research. See [docs/09-deploy-and-demo.md](docs/09-deploy-and-demo.md#limitations-be-upfront).
+No payments, GPS or SMS. WhatsApp is used only through chat and share links (no WhatsApp messages are sent by the app). The app can be added to a phone's home screen but needs internet to work. Pilot areas and units are placeholders until confirmed by research. See [docs/09-deploy-and-demo.md](docs/09-deploy-and-demo.md#limitations-be-upfront).

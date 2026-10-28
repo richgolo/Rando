@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../auth/AuthProvider'
 import { unwrap, useData } from '../lib/useData'
 import { STATUS_LABELS, SUPPORT_CONTACT } from '../lib/constants'
-import { formatDateTime, formatGhs } from '../lib/format'
+import { formatDateTime, formatGhs, whatsappLink } from '../lib/format'
 import { ErrorBox, Field, Loading, StatusBadge } from '../components/ui'
 import Icon from '../components/Icon'
 import RequestSummary from '../components/RequestSummary'
@@ -131,9 +131,22 @@ export default function JobDetail() {
             {other?.phone && <p className="muted">{other.phone}</p>}
           </div>
           {other?.phone && (
-            <a className="btn btn-primary" href={`tel:${other.phone.replace(/\s/g, '')}`}>
-              <Icon name="phone" size={16} /> Call
-            </a>
+            <div className="contact-actions">
+              <a className="btn btn-primary" href={`tel:${other.phone.replace(/\s/g, '')}`}>
+                <Icon name="phone" size={16} /> Call
+              </a>
+              <a
+                className="btn btn-whatsapp"
+                href={whatsappLink(
+                  `Hi ${other.full_name}, this is ${profile.full_name} from FarmHaul about the ${request.produce} delivery (${request.pickup_area} to ${request.destination_area}).`,
+                  other.phone,
+                )}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon name="chat" size={16} /> WhatsApp
+              </a>
+            </div>
           )}
         </div>
         <div className="price-row">

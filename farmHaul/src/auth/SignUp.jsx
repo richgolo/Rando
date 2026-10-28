@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from './AuthProvider'
 import { PILOT_AREAS } from '../lib/constants'
@@ -10,8 +10,9 @@ const PHONE_RE = /^\+?[0-9 ]{9,16}$/
 
 export default function SignUp() {
   const { user, loading } = useAuth()
+  const [params] = useSearchParams()
   const [form, setForm] = useState({
-    role: 'farmer', full_name: '', phone: '', area: PILOT_AREAS[0], email: '', password: '',
+    role: params.get('role') === 'transporter' ? 'transporter' : 'farmer', full_name: '', phone: '', area: PILOT_AREAS[0], email: '', password: '',
   })
   const [errors, setErrors] = useState({})
   const [error, setError] = useState(null)

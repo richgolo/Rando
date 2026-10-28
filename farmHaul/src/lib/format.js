@@ -37,3 +37,16 @@ export function friendlyError(error) {
   if (/Failed to fetch|NetworkError/i.test(msg)) return 'Network problem. Check your connection and try again.'
   return msg
 }
+
+// WhatsApp needs the number in international form without "+" or spaces:
+// "024 123 4567" -> "233241234567", "+233 24 123 4567" -> "233241234567"
+export function whatsappNumber(phone) {
+  const digits = String(phone).replace(/\D/g, '')
+  return digits.startsWith('0') ? `233${digits.slice(1)}` : digits
+}
+
+// Opens a WhatsApp chat with a pre-filled message. Without a phone, WhatsApp asks who to send it to.
+export function whatsappLink(text, phone) {
+  const to = phone ? whatsappNumber(phone) : ''
+  return `https://wa.me/${to}?text=${encodeURIComponent(text)}`
+}

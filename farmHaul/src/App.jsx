@@ -14,12 +14,13 @@ import MakeOffer from './transporter/MakeOffer'
 import MyJobs from './transporter/MyJobs'
 import Vehicles from './transporter/Vehicles'
 import JobDetail from './shared/JobDetail'
+import Landing from './Landing'
 
-// Sends each user to the right home page for their role.
+// Visitors see the front page; signed-in users go to their role's home page.
 function Home() {
   const { user, profile, loading } = useAuth()
   if (loading) return <Loading />
-  if (!user) return <Navigate to="/signin" replace />
+  if (!user) return <Landing />
   return <Navigate to={profile?.role === 'transporter' ? '/transporter' : '/farmer'} replace />
 }
 
