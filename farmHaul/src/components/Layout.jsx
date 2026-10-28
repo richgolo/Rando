@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useAuth } from '../auth/AuthProvider'
 import Icon from './Icon'
 import logo from '../assets/logo-header.png'
@@ -21,6 +21,14 @@ function initials(name) {
 
 export default function Layout() {
   const { user, profile, loading, signOut } = useAuth()
+  const navigate = useNavigate()
+
+  // Leave the current page first, so the next person who signs in
+  // isn't sent back to a page meant for this account.
+  function handleSignOut() {
+    navigate('/', { replace: true })
+    signOut()
+  }
   const links = profile ? NAV[profile.role] : []
 
   return (
@@ -56,7 +64,7 @@ export default function Layout() {
                 <span className="user-name">{profile.full_name}</span>
                 <span className="user-role">{profile.role === 'farmer' ? 'Farmer' : 'Transporter'}</span>
               </span>
-              <button className="icon-btn" onClick={signOut} title="Sign out" aria-label="Sign out">
+              <button className="icon-btn" onClick={handleSignOut} title="Sign out" aria-label="Sign out">
                 <Icon name="logout" size={18} />
               </button>
             </div>

@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from './AuthProvider'
 import { Empty, Loading } from '../components/ui'
 
@@ -17,13 +17,7 @@ export default function RequireRole({ role, children }) {
       </Empty>
     )
   }
-  if (role && profile.role !== role) {
-    return (
-      <Empty title="This page is not available for your account">
-        <p className="muted">It is for {role}s only.</p>
-        <Link className="btn" to="/">Go to my home page</Link>
-      </Empty>
-    )
-  }
+  // A page for the other role (e.g. an old link): go to this user's own home page instead.
+  if (role && profile.role !== role) return <Navigate to="/" replace />
   return children
 }

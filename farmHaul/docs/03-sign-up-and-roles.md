@@ -4,7 +4,7 @@
 - A **sign-up** screen where users pick *Farmer* or *Transporter* and enter name, phone, area, email and password.
 - A **sign-in** screen.
 - Automatic redirect to the right home page for each role.
-- **Page guards**, so a farmer who types a transporter URL sees "This page is not available for your account".
+- **Page guards**, so a farmer who opens a transporter page (or the other way round) is taken to their own home page.
 
 ## How it works
 1. **Sign-up** ([src/auth/SignUp.jsx](../src/auth/SignUp.jsx)) calls `supabase.auth.signUp(...)` and sends role, name, phone and area as extra *metadata*.
@@ -12,7 +12,7 @@
 3. **AuthProvider** ([src/auth/AuthProvider.jsx](../src/auth/AuthProvider.jsx)) keeps track of the session (are you logged in?) and loads your profile (who you are). It also handles the moment right after sign-in when the session exists but the profile is still loading, so pages don't flash an error.
 4. **RequireRole** ([src/auth/RequireRole.jsx](../src/auth/RequireRole.jsx)) wraps each page:
    - not signed in → sent to `/signin`, then back to the page they wanted
-   - wrong role → friendly "not available" message
+   - wrong role → sent to their own home page (this also covers signing out as a farmer and signing in as a transporter)
 5. **Home** (in [src/App.jsx](../src/App.jsx)) sends farmers to `/farmer` and transporters to `/transporter`.
 
 ## Validation

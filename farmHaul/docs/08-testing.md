@@ -30,7 +30,8 @@ What it checks (matches the design doc's "functional acceptance tests"):
 Use two browsers (or one normal + one private window): one as farmer, one as transporter.
 
 - [ ] Sign up a farmer and a transporter; each lands on the right home page
-- [ ] Farmer types `/transporter` in the URL → "not available for your account"
+- [ ] Farmer types `/transporter` in the URL → taken to their own home page (`/farmer`)
+- [ ] Sign out as a farmer, sign in as a transporter → lands on *Find loads*, not a farmer page
 - [ ] Farmer: submit empty form → errors under each field; past date refused
 - [ ] Farmer posts request → appears in "My requests" after refresh
 - [ ] Transporter with no vehicle → "Add a vehicle first"
