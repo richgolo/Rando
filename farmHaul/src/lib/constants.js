@@ -1,7 +1,11 @@
 // Placeholder values until Week 1 research confirms them.
 // If you change UNITS, also change the check constraints in the SQL migration.
 
-export const PILOT_AREAS = ['Techiman', 'Wenchi', 'Nkoranza', 'Kintampo', 'Kumasi']
+// Towns people can pick for their own area, pickup and destination. Kept A to Z for the dropdowns.
+export const PILOT_AREAS = [
+  'Aburi', 'Accra', 'Cape Coast', 'Ejura', 'Ho', 'Kintampo', 'Koforidua', 'Kumasi', 'Nkoranza',
+  'Nsawam', 'Sunyani', 'Takoradi', 'Tamale', 'Techiman', 'Tema', 'Wenchi',
+]
 
 export const UNITS = ['crates', 'bags', 'kg', 'tonnes']
 

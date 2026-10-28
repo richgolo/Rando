@@ -14,7 +14,7 @@ export default function Landing() {
     <div className="landing">
       <section className="landing-hero">
         <div className="landing-copy">
-          <p className="eyebrow">Now in {PILOT_AREAS.join(', ')}</p>
+          <p className="eyebrow">Now in {PILOT_AREAS.length} towns across Ghana</p>
           <h1>Get your harvest to market on time.</h1>
           <p className="landing-lede">
             FarmHaul connects farmers with local transporters. Post a load, get prices from drivers nearby, and follow it all the way to market.
